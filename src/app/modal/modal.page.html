@@ -1,0 +1,52 @@
+<ion-header >
+  <ion-toolbar color='primary' style='height:30px'>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row no-padding align-item-center >
+        <ion-col size = '12' class = 'detailtitle ion-text-justify' text-center>
+          <h5 #dgSubject>
+             {{contents.title}}
+          </h5>
+        </ion-col>
+        <ion-col size = '12' class = 'detailpost' >
+          <span  #dgpost>{{contents.postman}}</span>
+        </ion-col>
+        <ion-col size = '12' class = 'detailcontents ion-text-justify' text-center>
+          <div #dgcontent [innerHTML]="contents.contents"></div>
+        </ion-col>
+        <ion-col size = '12'  >
+          <p class = 'detailinfo' #dginfo>{{contents.info}}</p>
+        </ion-col>
+  
+      </ion-row>
+</ion-content>
+<ion-footer>
+    <ion-row  class='ion-align-items-center'>
+     
+      <!-- <ion-col size = '2'>
+          <ion-button expand = 'full' fill='clear' color='primary' (click)='presspopover($event)'>
+              <ion-icon name='link'></ion-icon>
+          </ion-button>
+      </ion-col> -->
+      <ion-col size = '8' class='dglink' >
+            <a  href = '{{contents.link.doi}}' > DOI </a>| <a  href = '{{contents.link.pub}}' > PubMed </a>|<a  href = '{{contents.link.pdf}}' > PDF </a>|<a  href = '{{contents.link.google}} ' > Google</a>
+      </ion-col>
+      <ion-col size='2'>
+          <!-- <ion-icon name='ios-share-outline' md="md-share"></ion-icon> -->
+          <div (click) = 'sendShare(dgSubject.innertext,dgcontent.innertext,dgpost.innertext,dginfo.innertext,contents.link.doi,contents.link.pub,contents.link.pdf,contents.link.google)'>
+            <ion-img src='assets/imgs/share.png' style='width:40%;' ></ion-img>
+          </div>
+      </ion-col>
+      <ion-col size = '2' >
+          <div (click)='closeModal()'>
+              <ion-img src='assets/imgs/close.png' style='width:40%;' ></ion-img>
+            </div>
+          <!-- <ion-button  fill='clear' size='large' color='primary' >
+              <ion-icon name='ios-close-circle-outline'></ion-icon>
+        </ion-button> -->
+      </ion-col>
+    </ion-row>
+    
+</ion-footer>

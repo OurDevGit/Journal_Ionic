@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/first" ></ion-back-button>
+      </ion-buttons>
+    <ion-title>contact</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div >
+    <ion-item >
+      <ion-label color = 'primary' stacked > Subject :</ion-label>
+      <ion-input [(ngModel)] = 'subject' type = 'text' aria-placeholder="Type your Subject"></ion-input>
+    </ion-item>
+    <ion-item >
+        <ion-label color = 'primary' stacked > From :</ion-label>
+        <ion-input [(ngModel)] = 'from' type = 'text' aria-placeholder="Type your Email"></ion-input>
+      </ion-item>
+    <ion-item lines='none'>
+      <ion-label color = 'primary' stacked>Content :</ion-label>
+    </ion-item>
+    <ion-item lines='none'>
+        <ion-textarea row = "30" auto-grow = 'true' [(ngModel)] = 'body' aria-placeholder="Type your Content" ></ion-textarea>
+    </ion-item>
+    <ion-button expand = 'block' (click) = 'send()'> Send Mail</ion-button>
+  </div>
+</ion-content>

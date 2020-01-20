@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    
+    <ion-title>
+      Selection
+    </ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-row class="ion-justify-content-center ion-align-items-center"  style = 'transform: scale(2); height: 100%;' *ngIf='false' >
+      <ion-spinner name='bubbles' style="margin: 0 auto;" ></ion-spinner>
+  </ion-row>
+  <ion-list *ngFor = 'let item of information; let i = index;' class="accordion-list" lines='none' detail="false" no-padding>
+
+    <ion-item tappabel (click)="toggleSection(i)"  class = 'listitem' [ngClass]="{'section-active':item.open, 'section': !item.open}">
+      <ion-icon slot='start' name='arrow-forward' *ngIf='!item.open'></ion-icon>
+      <ion-icon slot='start' name='arrow-down' *ngIf='item.open'></ion-icon>
+      <ion-label>
+        {{item.name}}
+      </ion-label>
+    </ion-item>
+      <div *ngIf=' item.open'>
+        <ion-list *ngFor='let child of item.children;let j =index;' lines='none' class='child-list'>
+            <ion-item tappabel  (click)="pushpage(i,j)" routerDirection='forward' [ngClass]="{'child-active':child.open, 'child': !child.open}">
+              <ion-icon slot='start'  outline name='folder'  *ngIf='!child.open'></ion-icon>
+              <ion-label>
+                {{child.name}}
+              </ion-label>
+            </ion-item>
+          </ion-list>
+      </div>
+    
+  </ion-list>
+</ion-content>
+  
