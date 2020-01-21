@@ -17,7 +17,7 @@ export class ModalPage implements OnInit {
   ngOnInit() {
     this.content = this.navParams.get('contents');
   }
-
+  
   async presspopover(){
     const popver = await this.popoverctrl.create({
       component:MpopoverComponent,
@@ -30,20 +30,20 @@ export class ModalPage implements OnInit {
     return await popver.present();
   }
   sendShare(sub,content,post,info,doi,pub,pdf,google){
-   
-
+    console.log("a~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",sub);
     let dgspace = '\n\n';
-    let subject  = sub+dgspace;
-    let maincontent =content + dgspace ;
-    let mpost = post + dgspace;
+    let dgenter = '<br>';
+    let subject  = sub + dgspace + dgenter;
+    let maincontent = content + dgspace + dgenter ;
+    let mpost = post + dgspace + dgenter;
     
-    let minfo = info +dgspace;
-    let mdoi ='DOI :'+ doi +dgspace;
-    let mpub ='PUB :'+pub + dgspace;
-    let mpdf = 'PDF :'+pdf+dgspace;
-    let mgoogle = 'Google :'+google +dgspace;
-    let sendcontent = subject + mpost + maincontent + minfo+ mdoi + mpub + mpdf+mgoogle;
-    //console.log(sendcontent);
+    let minfo = info +dgspace + dgenter;
+    let mdoi ='DOI :'+ doi +dgspace + dgenter;
+    let mpub ='PUB :'+pub + dgspace + dgenter;
+    let mpdf = 'PDF :'+pdf+dgspace + dgenter;
+    let mgoogle = 'Google :'+google +dgspace + dgenter;
+    let sendcontent ="<html><body>" + subject + mpost + maincontent + minfo+ mdoi + mpub + mpdf+mgoogle + "</body></html>";
+    console.log("share",sendcontent);
 
     this.socialSharing.share( sendcontent,sub,null,null);
   }
